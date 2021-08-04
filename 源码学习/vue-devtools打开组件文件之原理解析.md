@@ -10,7 +10,7 @@
 
 vue-devtools提供了一个功能：**点击页面按钮会让编辑器自动打开对应文件**。
 
-![image-20210804195356407](C:\Users\bryson.lin\AppData\Roaming\Typora\typora-user-images\image-20210804195356407.png)
+![image](https://user-images.githubusercontent.com/47481681/128219211-27735beb-c737-4891-a6a7-c5193cea5951.png)
 
 类似地，react也有react-dev-inspector实现了这个功能。同时，它们也都支持主流的编辑器，不用担心不兼容的情况。
 
@@ -27,7 +27,7 @@ vue-devtools提供了一个功能：**点击页面按钮会让编辑器自动打
 
 ### 阅读官方文档
 
-![image-20210804201433164](C:\Users\bryson.lin\AppData\Roaming\Typora\typora-user-images\image-20210804201433164.png)
+![image](https://user-images.githubusercontent.com/47481681/128219245-30a0c369-5ce0-4f6c-ac5b-3c574a59d301.png)
 
 从文档中，我们获悉Vue CLI3已经默认有了vue-devtools的功能，我们无需再进行额外的安装。也从中了解了devtools的使用方法：
 
@@ -64,11 +64,11 @@ if (process.env.NODE_ENV !== 'production')
 
 在一切环境搭建之后，我们开始我们的调试之旅~，首先先让我们打开调试模式：
 
-![image-20210804202434689](C:\Users\bryson.lin\AppData\Roaming\Typora\typora-user-images\image-20210804202434689.png)
+![image](https://user-images.githubusercontent.com/47481681/128219285-f45b4ca8-59a5-4e8b-991e-d0233b2a2cb9.png)
 
 并找到`launch-editor-middleware`中间件的具体位置：
 
-![image-20210804202712806](C:\Users\bryson.lin\AppData\Roaming\Typora\typora-user-images\image-20210804202712806.png)
+![image](https://user-images.githubusercontent.com/47481681/128219301-93040ef4-578a-4b8d-ba29-a16208ff1fac.png)
 
 接下来，我们开始对源码进行分析。
 
@@ -96,9 +96,9 @@ const server = new WebpackDevServer(compiler, Object.assign({
 ...
 ```
 
-可以看出，利用expresss在当我们点击打开编辑器时，发出了一个请求。
+可以看出，利用express在当我们点击打开编辑器时，发出了一个请求。
 
-![image-20210804203511379](C:\Users\bryson.lin\AppData\Roaming\Typora\typora-user-images\image-20210804203511379.png)
+![image](https://user-images.githubusercontent.com/47481681/128219567-c04566b0-971d-4d70-afc6-c51e0af2fd96.png)
 
 原来为了实现这样的效果，还用到了webpack、express，漫漫前端路，道阻且长啊~
 
@@ -152,7 +152,6 @@ module.exports = (specifiedEditor, srcRoot, onErrorCallback) => {
 }
 ```
 
-![image-20210804205801103](C:\Users\bryson.lin\AppData\Roaming\Typora\typora-user-images\image-20210804205801103.png)
 
 **上面这种切换参数的写法，为的是方便用户调用时传参。虽然是多个参数，但可以传一个或者两个**，又涨知识了~
 
@@ -220,7 +219,7 @@ function launchEditor (file, specifiedEditor, onErrorCallback) {
 
 包裹错误回调的函数：
 
-![image-20210804211212409](C:\Users\bryson.lin\AppData\Roaming\Typora\typora-user-images\image-20210804211212409.png)
+![image](https://user-images.githubusercontent.com/47481681/128219720-80bfbb55-afaf-4886-94f4-942686273f82.png)
 
 用于打印出错误信息。
 
@@ -322,7 +321,7 @@ module.exports = launchEditor
 
 从这段源码中，可以看出editor可以获取出：
 
-![image-20210804231414163](/Users/brysonlin/Library/Application Support/typora-user-images/image-20210804231414163.png)
+![image](https://user-images.githubusercontent.com/47481681/128219793-86babe6b-1f35-42ed-a430-a36e326d1e5f.png)
 
 得到了我的editor为vscode，运行命令并执行exit清空子进程后退出，至此前面的代码均运行完毕。
 
