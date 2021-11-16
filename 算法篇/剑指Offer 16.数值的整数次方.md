@@ -88,7 +88,7 @@ var myPow = function(x,n){
  */
 var myPow = function(x, n) {
     let reusult = 1.0;
-    //如果负数，2^-2可以编程 （1/2）^2
+    //如果负数，2^-2可以变成（1/2）^2
     if(n<0){
         //js中默认不是整除
         x = 1/x;
